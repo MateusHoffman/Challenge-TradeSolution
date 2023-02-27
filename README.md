@@ -1,5 +1,7 @@
 # 🚀💼 Challenge-TradeSolution-Mobile 💼🚀
 
+#### Download the APK here: [expo.dev/MateusHoffman/Challenge-TradeSolution/](https://expo.dev/accounts/mateushoffman/projects/Challenge-TradeSolution/builds/deeb9158-499d-4410-8f79-cae022d7fdb1) 
+
 ## Preview:
 
 <div align="center" margin="50px">
