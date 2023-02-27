@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import { useGlobalContext } from '../contexts/useContext'
 
@@ -7,15 +7,11 @@ import cep from '../services/helpers'
 import api from '../services/request'
 
 export default function Home() {
+  const { navigate } = useNavigation();
   const { dispatch } = useGlobalContext()
 
   const [inputSearch, setInputSearch] = useState('');
   const [validSearch, setValidSearch] = useState(true);
-  const { navigate } = useNavigation();
-
-  function navigateToDetails(){
-    navigate('DetailsCEP');
-  }
 
   async function requestAPI(){
     try {
@@ -24,7 +20,7 @@ export default function Home() {
       dispatch({ type: 'setLoading', payload: false })
       dispatch({ type: 'setDetailsCep', payload: data })
       setInputSearch('')
-      navigateToDetails()
+      navigate('DetailsCEP')
     } catch {
       alert('CEP inválido. Tente novamente!')
       dispatch({ type: 'setLoading', payload: false })
@@ -33,7 +29,7 @@ export default function Home() {
   }
 
   async function handleSearch(){
-    const validateCEP = /^\s*\d{5}(?:-?\d{3})?\s*$/;
+    const validateCEP = /^[0-9][0-8]\d{3}-\d{3}$/;
     if (validateCEP.test(inputSearch)) {
       requestAPI()
     } else {
@@ -66,25 +62,6 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#16191d',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#ffffff',
-  },
-  logo: {
-    width: 125,
-    height: 125,
-  },
-  goBackButton: {
-    backgroundColor: "#223240",
-    padding: 10,
-    borderRadius: 8,
-    position: 'absolute',
-    top: 40,
-    left: 10
-  },
   input: {
     width: 265,
     margin: 12,
