@@ -12,6 +12,7 @@ export type IDetailsCep = {
 
 export type GlobalStateType = {
   detailsCep: IDetailsCep | null
+  favoriteCep: IDetailsCep[] | null
   loading: boolean
   error: string
 }
@@ -19,6 +20,7 @@ export type GlobalStateType = {
 // The initial state
 export const initialState: GlobalStateType = {
   detailsCep: null,
+  favoriteCep: [],
   loading: false,
   error: '',
 }

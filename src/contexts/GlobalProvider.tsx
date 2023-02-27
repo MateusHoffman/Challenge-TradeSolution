@@ -11,6 +11,10 @@ export type GlobalActionType =
     type: 'setLoading'
     payload: boolean
   }
+  | {
+    type: 'setFavoriteCep'
+    payload: IDetailsCep[]
+  }
 
 export type GlobalContextType = {
   state: GlobalStateType
@@ -30,6 +34,13 @@ const globalContextReducer = (state: GlobalStateType, action: GlobalActionType):
       return {
         ...state,
         loading: action.payload,
+        error: '',
+      }
+    }
+    case 'setFavoriteCep': {
+      return {
+        ...state,
+        favoriteCep: action.payload,
         error: '',
       }
     }
