@@ -21,7 +21,6 @@
 </details>
 
 <br>
-<br>
 
 ## Open the project yourself:
 
